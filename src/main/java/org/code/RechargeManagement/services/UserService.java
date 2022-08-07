@@ -6,4 +6,9 @@ public interface UserService {
 	
 	User  getEmail(String emailId);
 
+	void deleteUser(String emailId);
+
+	void updateUser(String emailId, User users);
+
+
 }
