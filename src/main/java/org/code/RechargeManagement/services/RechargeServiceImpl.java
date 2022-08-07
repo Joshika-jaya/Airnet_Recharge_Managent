@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.code.RechargeManagement.entities.Recharge;
-import org.code.RechargeManagement.exceptions.RechargeNotFoundException;
+//import org.code.RechargeManagement.exceptions.RechargeNotFoundException;
 import org.code.RechargeManagement.repository.RechargeRepo;
 
 @Service
@@ -36,7 +36,7 @@ public class RechargeServiceImpl implements RechargeService {
 
 	}
 
-	@Override
+	/*@Override
 	public Recharge getRecharge(int rechargeId) {
 		// TODO Auto-generated method stub
 		return rechargeRepo.findById(rechargeId).orElseThrow(()->new RechargeNotFoundException("Recharge not found"));
@@ -53,6 +53,6 @@ public class RechargeServiceImpl implements RechargeService {
 		recharge2.setMobile(recharge.getMobile());
 		recharge2.setRechargePrice(recharge.getRechargePrice());
 		rechargeRepo.save(recharge2);
-	}
+	}*/
 
 }
