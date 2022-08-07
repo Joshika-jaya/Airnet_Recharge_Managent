@@ -1,9 +1,8 @@
-package service;
+package org.code.RechargeManagement.services;
+import org.code.RechargeManagement.entities.LoginEntity;
+import org.code.RechargeManagement.services.LoginService;
 
-import java.util.Optional;
-import java.util.List;
 
-import entities.LoginEntity;
 
 public interface LoginService {
 	

@@ -4,7 +4,7 @@ import org.code.RechargeManagement.entities.User;
 
 public interface UserService {
 	
-	User  getEmail(String emailId);
+	User getEmail(String emailId);
 
 	void deleteUser(String emailId);
 

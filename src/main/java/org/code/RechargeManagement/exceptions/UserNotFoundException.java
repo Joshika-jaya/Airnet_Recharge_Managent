@@ -1,12 +1,11 @@
-package Exception;
+package org.code.RechargeManagement.exceptions;
 
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 public class UserNotFoundException extends RuntimeException{
 	
-	public UserNotFoundException(String m) {
-		super(m);
+	public UserNotFoundException(String sen) {
+		super(sen);
 		// TODO Auto-generated constructor stub
 	}
 

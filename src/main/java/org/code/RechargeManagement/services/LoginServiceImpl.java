@@ -1,18 +1,15 @@
-package service;
+package org.code.RechargeManagement.services;
 
-import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import Exception.UserNotFoundException;
 
 import org.springframework.stereotype.Service;
+
+import org.code.RechargeManagement.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import Repository.LoginRepository;
-import entities.LoginEntity;
+import org.code.RechargeManagement.entities.LoginEntity;
+import org.code.RechargeManagement.exceptions.UserNotFoundException;
 
 
 @Service
