@@ -9,6 +9,6 @@ public interface RechargeService {
 	void insertRecharge(Recharge recharge);
 	List<Recharge> getRecharge();
 	void deleteRecharge(int rechargeId);
-	Recharge getRecharge(int rechargeId);
-	void updateRecharge(int rechargeId,Recharge recharge);
+	/*Recharge getRecharge(int rechargeId);
+	void updateRecharge(int rechargeId,Recharge recharge);*/
 }

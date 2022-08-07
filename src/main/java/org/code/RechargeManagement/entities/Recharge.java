@@ -21,11 +21,14 @@ public class Recharge {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int rechargeId;
 	private String rechargeType;
+	private int rechargePrice;
+	private String rechargeValidity;
+	private String rechargeName;
+	private String rechargeDescription;
 	private String name;
 	private String email;
 	private int mobile;
-	private int rechargePrice;
-	private String rechargePlan;
+	
 	public int getRechargeId() {
 		return rechargeId;
 	}
@@ -62,10 +65,22 @@ public class Recharge {
 	public void setRechargePrice(int rechargePrice) {
 		this.rechargePrice = rechargePrice;
 	}
-	public String getRechargePlan() {
-		return rechargePlan;
+	public String getRechargeValidity() {
+		return rechargeValidity;
 	}
-	public void setRechargePlan(String rechargePlan) {
-		this.rechargePlan = rechargePlan;
+	public void setRechargeValidity(String rechargeValidity) {
+		this.rechargeValidity = rechargeValidity;
+	}
+	public String getRechargeName() {
+		return rechargeName;
+	}
+	public void setRechargeName(String rechargeName) {
+		this.rechargeName = rechargeName;
+	}
+	public String getRechargeDescription() {
+		return rechargeDescription;
+	}
+	public void setRechargeDescription(String rechargeDescription) {
+		this.rechargeDescription = rechargeDescription;
 	}
 }

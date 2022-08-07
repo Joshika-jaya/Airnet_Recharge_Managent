@@ -19,7 +19,7 @@ public class PlansServiceImpl implements PlansService {
 	@Autowired
 	private PlansRepo plansRepo;
 	@Override
-	public void insertPlans(Plans plans) {
+	public void insertPlan(Plans plans) {
 		// TODO Auto-generated method stub
 		plansRepo.save(plans);
 	}
@@ -31,19 +31,19 @@ public class PlansServiceImpl implements PlansService {
 	}
 
 	@Override
-	public void deletePlans(int planId) {
+	public void deletePlan(int planId) {
 		// TODO Auto-generated method stub
 		plansRepo.deleteById(planId);
 	}
 
 	@Override
-	public Plans getPlans(int planId) {
+	public Plans getPlanById(int planId) {
 		// TODO Auto-generated method stub
 		return plansRepo.findById(planId).orElseThrow(()->new PlansNotFoundException("Plan not found"));
 	}
 
 	@Override
-	public void updatePlans(int planId, Plans plans){
+	public void updatePlan(int planId, Plans plans){
 		// TODO Auto-generated method stub
 		Plans plan2=plansRepo.findById(planId).orElseThrow(()->new PlansNotFoundException("Plan not found"));
 		plan2.setPlanName(plans.getPlanName());
