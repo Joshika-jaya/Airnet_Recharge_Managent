@@ -15,11 +15,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class User {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private String name;
 	private String email;
 	private String phonenumber;
@@ -48,4 +47,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 }

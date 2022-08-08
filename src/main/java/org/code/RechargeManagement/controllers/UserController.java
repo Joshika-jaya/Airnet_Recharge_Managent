@@ -1,7 +1,7 @@
 package org.code.RechargeManagement.controllers;
 
-import org.code.RechargeManagement.entities.User;
-import org.code.RechargeManagement.services.UserService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,46 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import org.code.RechargeManagement.entities.User;
+import org.code.RechargeManagement.services.UserService;
 
+//@CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping("/user")
-
+@RequestMapping("/admin")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-Map<String,User> allUsers = new HashMap<>();
-	
-	@GetMapping
-	public Collection<User> getMethod(){
-		return allUsers.values();
+	@PostMapping("/addUsers")
+	public ResponseEntity<?> insertUsers(@RequestBody User emailId){
+		userService.insertUsers(emailId);
+		return new ResponseEntity<String>("Inserted Successfully",HttpStatus.CREATED);
 	}
 	
-	@PostMapping
-	public ResponseEntity<String> postMethod(@RequestBody User userdetails){
-		User addValue = new User();
-		addValue.setName(userdetails.getName());
-		addValue.setEmail(userdetails.getEmail());
-		addValue.setPhonenumber(userdetails.getPhonenumber());
-		addValue.setPassword(userdetails.getPassword());
-		allUsers.put(userdetails.getName(),addValue );
-		return new ResponseEntity<String>("Posted Successfully",HttpStatus.OK);
+	
+	@GetMapping("/viewUsers")
+	public ResponseEntity<List<User>> getUsers(){
+		List<User> users=userService.getUsers();
+		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 	
-	@PutMapping("/updateUser/{emailId}")
-	public ResponseEntity<?> updateUser(@PathVariable("emailId") String emailId,@RequestBody User users){
-		userService.updateUser(emailId,users);
-		return new ResponseEntity<String>("Updated Successfully",HttpStatus.CREATED);
-	}
+	/*@GetMapping("/viewAddonById/{addonId}")
+	public ResponseEntity<?> getAddons(@PathVariable("addonId") int aid){
+		addonsService.getAddons(aid);
+		return new ResponseEntity<String>("Viewed Successfully",HttpStatus.OK);
+	}*/
 	
-	@DeleteMapping("/deleteUser/{emailId}")
-	public ResponseEntity<?> deleteUser(@PathVariable("emailId") String emailId){
-		userService.deleteUser(emailId);
+	@DeleteMapping("/deleteUsers/{emailId}")
+	public ResponseEntity<?> deleteUsers(@PathVariable("emailId") String emailId){
+		userService.deleteUsers(emailId);
 		return new ResponseEntity<String>("Deleted Successfully",HttpStatus.OK);
 	}
 
+	@PutMapping("/updateUsers/{emailId}")
+	public ResponseEntity<?> updateUsers(@PathVariable("emailId") String emailId,@RequestBody User users){
+		userService.updateUsers(emailId, users);
+		return new ResponseEntity<String>("Updated Successfully",HttpStatus.CREATED);
+	}
 }

@@ -1,5 +1,7 @@
 package org.code.RechargeManagement.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,25 +12,44 @@ import org.code.RechargeManagement.repository.UserRepo;
 
 @Service
 @Transactional
-public abstract class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
 	
 	@Override
-	public User getEmail(String emailId) {
-		this.userRepo.findByEmail(emailId).orElseThrow(()->new UserNotFoundException("User not found here"));
-		return this.userRepo.findByEmail(emailId).get();
-	}
-	@Override
-	public void deleteUser(String emailId){
-		userRepo.deleteAll();
-	}
-	@Override
-	public void updateUser(String emailId,User users){
-		User user2=userRepo.findByEmail(emailId).orElseThrow(()->new UserNotFoundException("User not found"));
-		user2.setEmail(users.getEmail());
-		userRepo.save(user2);
+	public void insertUsers(User users) {
+		// TODO Auto-generated method stub
+		userRepo.save(users);
 	}
 
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return userRepo.findAll();
+	}
+
+	@Override
+	public void deleteUsers(String emailId) {
+		// TODO Auto-generated method stub 
+		userRepo.deleteById(emailId);
+	}
+
+	@Override
+	public User getUsers(String emailId) {
+		// TODO Auto-generated method stub
+		return userRepo.findById(emailId).orElseThrow(()->new UserNotFoundException("User not found"));
+	}
+
+	@Override
+	public void updateUsers(String emailId, User users) {
+		// TODO Auto-generated method stub
+		User user2=userRepo.findById(emailId).orElseThrow(()->new UserNotFoundException("User not found"));
+		user2.setEmail(users.getEmail());
+		user2.setName(users.getName());
+		user2.setPhonenumber(users.getPhonenumber());
+		user2.setPassword(users.getPassword());
+		userRepo.save(user2);
+	}
 }
+
